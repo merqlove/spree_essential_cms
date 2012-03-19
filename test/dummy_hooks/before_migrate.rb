@@ -1,5 +1,6 @@
 # Install spree's migrations
 rake "spree:install:migrations"
+rake "spree_auth:install:migrations"
 
 # Mount the Spree::Core routes
 insert_into_file File.join('config', 'routes.rb'), :after => "Application.routes.draw do\n" do
