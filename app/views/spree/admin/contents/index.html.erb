@@ -11,7 +11,7 @@
 
 <h2><%= t('.listing_contents') %></h2>
 
-<table class="index sortable" data-sortable-link="<%= update_positions_admin_page_contents_url(@page) -%>">
+<table id="listing_contents" class="index sortable" data-sortable-link="<%= update_positions_admin_page_contents_url(@page) -%>">
   <thead>
   <tr>
       <th><%= sort_link @search, :title, t("content.title") %></th>
@@ -21,7 +21,7 @@
   </thead>
   <tbody>
     <%- @collection.each do |content|%>
-    <tr id="<%= dom_id content %>">
+    <tr id="spree_<%= dom_id content %>">
       <td><span class="handle">&nbsp;</span>&nbsp; <%= link_to content.title, object_url(content) %></td>
       <td><%= content.context %>
       <td>

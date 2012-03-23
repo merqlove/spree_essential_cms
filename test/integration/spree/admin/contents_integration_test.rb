@@ -107,11 +107,12 @@ class Spree::Admin::ContentsIntegrationTest < SpreeEssentials::IntegrationCase
       assert_seen "Content #1", :within => "tbody tr:first"
       assert_seen "Content #2", :within => "tbody tr:last"
 
-      # TODO: do real drag and drop here
-      # xhr :post, :update_positions, { :page_id => @page.to_param, :positions => positions, :authentication_token => session[:_csrf_token] }
-      # visit spree.admin_page_contents_path(@page)
-      # assert_seen "Content #2", :within => "tbody tr:first"
-      # assert_seen "Content #1", :within => "tbody tr:last"
+      page.execute_script %Q{
+        $('table#listing_contents tr:nth-child(2)').simulateDragSortable({move: -1, handle: '.handle'});
+      }
+
+      assert_seen "Content #2", :within => "tbody tr:first"
+      assert_seen "Content #1", :within => "tbody tr:last"
     end
 
   end
