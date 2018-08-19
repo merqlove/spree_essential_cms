@@ -14,7 +14,7 @@ class Spree::Page < ActiveRecord::Base
   validates_presence_of :title
   validates :path, :presence => true, :uniqueness => { :case_sensitive => false }
   
-  default_scope order(:position)
+  default_scope -> { order(:position) }
   
   scope :active,  where(:accessible => true)
   scope :visible, active.where(:visible => true)

@@ -4,7 +4,7 @@ class Spree::Content < ActiveRecord::Base
   validates_associated :page
   validates_presence_of :title, :page
 
-  default_scope order(:position)
+  default_scope -> { order(:position) }
 
   has_attached_file :attachment,
     :styles        => Proc.new{ |clip| clip.instance.attachment_sizes },
