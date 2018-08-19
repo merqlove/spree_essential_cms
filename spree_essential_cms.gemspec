@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   # Spree Essentials
   s.add_runtime_dependency('spree_essentials', '~> 3.0.0.rc1')
   s.add_runtime_dependency('spree_frontend', '~> 3.0')
+  s.add_runtime_dependency('rdiscount', '~> 2.2.0')
 
   # Development
   s.add_development_dependency('spree_sample', '~> 3.6.3')
