@@ -20,19 +20,32 @@ class Spree::Admin::ContentsController < Spree::Admin::ResourceController
 
   private
 
-    def get_pages
-      @pages = Spree::Page.order(:position).all
-    end
+  def get_pages
+    @pages = Spree::Page.order(:position).all
+  end
 
-    def parent
-	   @page ||= Spree::Page.find_by_path(params[:page_id])
-    end
+  def parent
+   @page ||= Spree::Page.find_by_path(params[:page_id])
+  end
 
-    def collection
-      params[:search] ||= {}
-      params[:search][:meta_sort] ||= "page.asc"
-      @search = parent.contents.metasearch(params[:search])
-      @collection = @search.page(params[:page]).per(Spree::Config[:orders_per_page])
-    end
+  def collection
+    params[:q] ||= {}
+    params[:q][:s] ||= "page asc"
+    @search = parent.contents.search(params[:q])
+    @collection = @search.page(params[:page]).per(Spree::Config[:admin_orders_per_page])
+  end
 
+  def permitted_resource_params
+    return ActionController::Parameters.new unless params[resource.object_name].present?
+    params.require(resource.object_name).permit(:delete_attachment,
+                                                :page,
+                                                :title,
+                                                :body,
+                                                :link,
+                                                :link_text,
+                                                :context,
+                                                :hide_title,
+                                                :position,
+                                                :attachment)
+  end
 end

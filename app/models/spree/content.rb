@@ -1,7 +1,5 @@
 class Spree::Content < ActiveRecord::Base
 
-  attr_accessor :delete_attachment
-
   belongs_to :page
   validates_associated :page
   validates_presence_of :title, :page
@@ -62,7 +60,7 @@ class Spree::Content < ActiveRecord::Base
     write_attribute :context, value.to_s.parameterize
   end
 
-private
+  private
 
   def delete_attachment!
     del = delete_attachment.to_s

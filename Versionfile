@@ -1,3 +1,5 @@
+"3.x"  => { :branch => "develop" }
+"1.0.x"  => { :version => "0.3.0.rc1" }
 "1.0.x"  => { :version => "0.3.0.rc1" }
 "0.70.x" => { :version => "0.2.1" }
 "0.60.x" => { :version => "0.1.2" }

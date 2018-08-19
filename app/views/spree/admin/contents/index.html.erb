@@ -1,17 +1,14 @@
-<div class='toolbar'>
-  <ul class='actions'>
-    <li>
-      <p><%= button_link_to t('.new_content'), new_object_url, :icon => 'add' %></p>
-    </li>
-  </ul>
-  <br class='clear' />
-</div>
+<% content_for :page_actions do %>
+  <%= button_link_to  t("new_content"), new_object_url, :icon => 'add', :class => "btn-success", :id => "new_content_link" %>
+<% end if can? :create, Spree::Content %>
+
+<% content_for :page_title do %>
+  <%= t('.listing_contents') %>
+<% end %>
 
 <%= render :partial => 'spree/admin/shared/page_tabs', :locals => {:current => 'Contents'} %>
 
-<h2><%= t('.listing_contents') %></h2>
-
-<table id="listing_contents" class="index sortable" data-sortable-link="<%= update_positions_admin_page_contents_url(@page) -%>">
+<table id="listing_contents" class="index sortable table" data-sortable-link="<%= update_positions_admin_page_contents_url(@page) -%>">
   <thead>
   <tr>
       <th><%= sort_link @search, :title, t("content.title") %></th>
@@ -40,8 +37,8 @@
 <div class="box">
   <h3><%= t(:search) %></h3>
 
-  <% @content = Spree::Content.metasearch %>
-  <%= form_for [:admin, @page, @content] do |f| %>
+  <% @content = Spree::Content.search %>
+  <%= search_form_for [:admin, @page, @content] do |f| %>
     <p>
       <label><%= t('content.title') %></label><br />
       <%= f.text_field :title_like, :size => 25 %>

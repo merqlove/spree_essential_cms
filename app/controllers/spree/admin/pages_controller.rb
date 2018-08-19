@@ -26,10 +26,22 @@ class Spree::Admin::PagesController < Spree::Admin::ResourceController
     end
     
     def collection
-      params[:search] ||= {}
-      params[:search][:meta_sort] ||= "page.asc"
-      @search = Spree::Page.metasearch(params[:search])
-      @collection = @search.page(params[:page]).per(Spree::Config[:orders_per_page])
+      params[:q] ||= {}
+      params[:q][:s] ||= "page asc"
+      @search = Spree::Page.search(params[:q])
+      @collection = @search.page(params[:page]).per(Spree::Config[:admin_orders_per_page])
     end
 
+    def permitted_resource_params
+      return ActionController::Parameters.new unless params[resource.object_name].present?
+      pparams.require(resource.object_name).permit(:title,
+                                                   :nav_title,
+                                                   :path,
+                                                   :meta_title,
+                                                   :meta_description,
+                                                   :meta_keywords,
+                                                   :position,
+                                                   :accessible,
+                                                   :visible)
+    end
 end

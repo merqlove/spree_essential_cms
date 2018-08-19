@@ -1,10 +1,7 @@
 source "http://rubygems.org"
 gemspec
 
-gem 'rails', '3.2.2'
-gem 'spree', :git => 'git://github.com/spree/spree.git'
-gem 'spree_cmd'
-gem 'spree_essentials', :git => 'git://github.com/lookz/spree_essentials.git'
+gem 'spree_essentials', :git => 'git://github.com/merqlove/spree_essentials.git', branch: '3.x'
 
 group :test do
   gem 'launchy'

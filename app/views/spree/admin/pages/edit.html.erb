@@ -1,12 +1,10 @@
 <%= render :partial => 'spree/admin/shared/page_tabs', :locals => {:current => 'Page Details'} %>
 
-<% if @page.try(:errors).present? %>
-  <%= render 'spree/shared/error_messages', :target => @page %>
-<% end %>
+<%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @page } %>
 
 <%= form_for([:admin, @page]) do |f| %>
-  <%= render "form", :form => f %>
-  <p class="form-buttons">
-    <%= button t("update") %> <%= t('or') %> <%= link_to t('cancel'), collection_url %>
-  </p>
+  <fieldset>
+    <%= render :partial => 'form', :form => f %>
+    <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+  </fieldset>
 <% end %>

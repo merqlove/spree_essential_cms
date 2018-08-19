@@ -1,66 +1,71 @@
-<%= form.field_container :title do %>
-  <%= form.label :title, t('content.title') %><br />
-  <%= form.text_field :title, :class => "title"  %>
-  <%= error_message_on :content, :title %>
-<% end %>
-
-<%= form.field_container :page do %>
-  <%= form.label :page_id, t('content.page') %><br />
-  <%= form.select :page_id, @pages.collect{|i| [i.title, i.id]}  %>
-  <%= error_message_on :content, :page_id %>
-<% end %>
-
-<%= form.field_container :body do %>
-  <%= form.label :title, t('content.body') %><%= markdown_helper %><br />
-  <%= form.text_area :body  %>
-  <%= error_message_on :content, :body %>
-<% end %>
+<div class="row">
+  <div class="col-md-3">
+    <%= form.field_container :title, class: ['form-group'] do %>
+      <%= form.label :title, t('content.title') %><br />
+      <%= form.text_field :title, :class => "title form-control"  %>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <%= form.field_container :page, class: ['form-group'] do %>
+      <%= form.label :page_id, t('content.page') %><br />
+      <%= form.select :page_id, @pages.collect{|i| [i.title, i.id]}, :class => "form-control"  %>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <%= form.field_container :body, class: ['form-group'] do %>
+      <%= form.label :title, t('content.body') %><%= markdown_helper %>
+      <%= form.text_area :body, :class => "form-control"  %>
+    <% end %>
+  </div>
+</div>
 
 <p><%= link_to "Optional Fields <span>&#9650;</span>".html_safe, "#options", :id => "btn_optional" %></p>
 
 <div class="optional" style="display: none;">
+  <div class="row">
+    <div class="col-md-3">
+      <%= form.field_container :context, class: ['form-group'] do %>
+        <%= form.label :context, t('content.context') %>
+        <%= form.text_field :context, :class => "text form-control"  %>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= form.field_container :attachment, class: ['form-group'] do %>
+        <%= form.label :attachment, t('content.attachment') %>
+        <%= form.file_field :attachment, :class => "form-control" %>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <% if @content.attachment.exists?(:mini) %>
+        <%= form.field_container :delete_attachment, class: ['form-group'] do %>
+          <%= form.check_box :delete_attachment %>
+          <%= form.label :delete_attachment, t('content.delete_attachment'), :class => "form-control" %>
+        <% end %>
 
-  <%= form.field_container :context do %>
-    <%= form.label :context, t('content.context') %><br />
-    <%= form.text_field :context, :class => "text"  %>
-    <%= error_message_on :content, :context %>
-  <% end %>
-
-  <%= form.field_container :attachment do %>
-    <%= form.label :attachment, t('content.attachment') %><br />
-    <%= form.file_field :attachment %>
-    <%= error_message_on :content, :attachment %>
-  <% end %>
-  
-  <% if @content.attachment.exists?(:mini) %>
-    <%= form.field_container :delete_attachment do %>
-      <%= form.check_box :delete_attachment %>
-      <%= form.label :delete_attachment, t('content.delete_attachment') %><br />
-    <% end %>
-  <% end %>
-  
-  <% if @content.attachment.exists?(:mini) %>
-    <p><%= image_tag @content.attachment.url(:mini) %></p>
-  <% end %>
-
-  <%= form.field_container :link do %>
-    <%= form.label :link, t('content.link') %><br />
-    <%= form.text_field :link, :class => "text"  %>
-    <%= error_message_on :content, :link %>
-  <% end %>
-  
-  <%= form.field_container :link_text do %>
-    <%= form.label :link_text, t('content.link_text') %><br />
-    <%= form.text_field :link_text, :class => "text"  %>
-    <%= error_message_on :content, :link_text %>
-  <% end %>
-  
-  <%= form.field_container :hide_title do %>
-    <%= form.check_box :hide_title, :class => "checkbox"  %>
-    <%= form.label :hide_title, t('content.hide_title') %><br />
-    <%= error_message_on :content, :hide_title %>
-  <% end %>
-
+        <p><%= image_tag @content.attachment.url(:mini) %></p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <%= form.field_container :link, class: ['form-group'] do %>
+        <%= form.label :link, t('content.link') %>
+        <%= form.text_field :link, :class => "text form-control"  %>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= form.field_container :link_text, class: ['form-group'] do %>
+        <%= form.label :link_text, t('content.link_text') %>
+        <%= form.text_field :link_text, :class => "text form-control"  %>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= form.field_container :hide_title, class: ['form-group'] do %>
+        <%= form.label :hide_title, t('content.hide_title') %>
+        <%= form.check_box :hide_title, :class => "checkbox form-control" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <% content_for :head do %>

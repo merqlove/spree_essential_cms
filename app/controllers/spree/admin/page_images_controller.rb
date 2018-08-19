@@ -33,4 +33,8 @@ class Spree::Admin::PageImagesController < Spree::Admin::ResourceController
     @viewable = @page_image.viewable
   end
 
+  def permitted_resource_params
+    return ActionController::Parameters.new unless params[resource.object_name].present?
+    params.require(resource.object_name).permit(:delete_attachment, :attachment, :alt)
+  end
 end
