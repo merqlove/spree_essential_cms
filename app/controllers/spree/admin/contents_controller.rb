@@ -1,9 +1,9 @@
 class Spree::Admin::ContentsController < Spree::Admin::ResourceController
 
-  before_filter :load_resource
-  before_filter :parent, :only => :index
+  before_action :load_resource
+  before_action :parent, :only => :index
 
-  before_filter :get_pages, :only => [ :new, :edit, :create, :update ]
+  before_action :get_pages, :only => [ :new, :edit, :create, :update ]
 
   belongs_to 'spree/page'
 
