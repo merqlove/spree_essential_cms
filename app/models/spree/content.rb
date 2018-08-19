@@ -1,6 +1,7 @@
 class Spree::Content < ActiveRecord::Base
 
   belongs_to :page
+
   validates_associated :page
   validates_presence_of :title, :page
 
@@ -15,7 +16,7 @@ class Spree::Content < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 10
 
-  scope :for, Proc.new{|context| where(:context => context)}
+  scope :for, ->(context) { where(:context => context) }
 
   before_update :delete_attachment!, :if => :delete_attachment
   before_update :reprocess_images_if_context_changed
