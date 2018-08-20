@@ -8,12 +8,11 @@ class Spree::Admin::ContentsController < Spree::Admin::ResourceController
   belongs_to 'spree/page'
 
   def update_positions
-    @page = parent
     params[:positions].each do |id, index|
-      @page.contents.update_all(['position=?', index], ['id=?', id])
+      parent.contents.update_all(['position=?', index], ['id=?', id])
     end
     respond_to do |format|
-      format.html { redirect_to admin_page_contents_url(@page) }
+      format.html { redirect_to admin_page_contents_url(parent) }
       format.js  { render :text => 'Ok' }
     end
   end
@@ -47,9 +46,5 @@ class Spree::Admin::ContentsController < Spree::Admin::ResourceController
                                                 :hide_title,
                                                 :position,
                                                 :attachment)
-  end
-
-  def model_class
-    Spree::Content
   end
 end
