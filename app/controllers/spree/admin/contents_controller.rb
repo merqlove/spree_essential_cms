@@ -32,7 +32,7 @@ class Spree::Admin::ContentsController < Spree::Admin::ResourceController
     params[:q] ||= {}
     params[:q][:s] ||= "page asc"
     @search = parent.contents.search(params[:q])
-    @collection = @search.page(params[:page]).per(Spree::Config[:admin_orders_per_page])
+    @collection = @search.result.page(params[:page]).per(Spree::Config[:admin_orders_per_page])
   end
 
   def permitted_resource_params
