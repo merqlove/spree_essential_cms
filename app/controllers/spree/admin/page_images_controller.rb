@@ -37,4 +37,8 @@ class Spree::Admin::PageImagesController < Spree::Admin::ResourceController
     return ActionController::Parameters.new unless params[resource.object_name].present?
     params.require(resource.object_name).permit(:delete_attachment, :attachment, :alt)
   end
+
+  def model_class
+    Spree::PageImage
+  end
 end

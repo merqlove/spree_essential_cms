@@ -25,7 +25,7 @@ class Spree::Admin::ContentsController < Spree::Admin::ResourceController
   end
 
   def parent
-   @page ||= Spree::Page.find_by_path(params[:page_id])
+    @page ||= Spree::Page.find_by_path(params[:page_id])
   end
 
   def collection
@@ -47,5 +47,9 @@ class Spree::Admin::ContentsController < Spree::Admin::ResourceController
                                                 :hide_title,
                                                 :position,
                                                 :attachment)
+  end
+
+  def model_class
+    Spree::Content
   end
 end

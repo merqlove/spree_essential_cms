@@ -44,4 +44,8 @@ class Spree::Admin::PagesController < Spree::Admin::ResourceController
                                                    :accessible,
                                                    :visible)
     end
+
+    def model_class
+      Spree::Page
+    end
 end
