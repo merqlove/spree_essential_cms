@@ -15,7 +15,7 @@ Add spree_essential_cms to your Gemfile:
 
 ```ruby
 # Spree 3.x
-gem 'spree_essential_cms', '~> 3.0.0.rc1'
+gem 'spree_essential_cms', git: 'git://github.com/merqlove/spree_essential_cms.git', branch: 'develop'
 
 # Spree 1.0.x
 gem 'spree_essential_cms', '~> 0.3.0.rc1'
@@ -176,6 +176,11 @@ If for any reason you want to re-create your `test/dummy` app, just re-run `bund
 Change Log
 ------------------------------------------------------------------------------
 
+**3.0.0.rc1 - 2018/8/18**
+
+* Add support for Spree 3.x, Rails 5.x, Ruby 2.x
+
+
 **0.3.0.rc1 - 2012/1/16**
 
 * Add support for Spree 1.0.x
@@ -226,6 +231,7 @@ To Do
 Contributors
 ------------------------------------------------------------------------------
 
+* Alexander Merkulov ([@merqlove](https://github.com/merqlove))
 * Spencer Steffen ([@citrus](https://github.com/citrus))
 * Stéphane Bounmy ([@sbounmy](https://github.com/sbounmy))
 * Kyle West ([@kylewest](https://github.com/kylewest))
