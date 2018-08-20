@@ -44,7 +44,7 @@
   <%= search_form_for [:admin, @page] do |f| %>
     <p>
       <label><%= t '.title_contains' %></label><br />
-      <%= f.text_field :title_contains, :size => 25 %>
+      <%= f.text_field :title_cont, :size => 25 %>
     </p>
     <p><%= button t("search") %></p>
   <% end %>

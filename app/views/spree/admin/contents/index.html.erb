@@ -41,7 +41,7 @@
   <%= search_form_for [:admin, @page, @content] do |f| %>
     <p>
       <label><%= t('content.title') %></label><br />
-      <%= f.text_field :title_like, :size => 25 %>
+      <%= f.text_field :title_cont, :size => 25 %>
     </p>
     <p><%= button t("search") %></p>
   <% end %>
