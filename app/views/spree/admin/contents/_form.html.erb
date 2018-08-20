@@ -11,6 +11,8 @@
       <%= form.select :page_id, @pages.collect{|i| [i.title, i.id]}, :class => "form-control"  %>
     <% end %>
   </div>
+</div>
+<div class="row">
   <div class="col-md-3">
     <%= form.field_container :body, class: ['form-group'] do %>
       <%= form.label :title, t('content.body') %><%= markdown_helper %>

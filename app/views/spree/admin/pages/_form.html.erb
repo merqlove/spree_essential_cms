@@ -5,9 +5,11 @@
       <%= form.text_field :title, :class => "title form-control" %>
     <% end %>
   </div>
+</div>
+<div class="row">
   <div class="col-md-3">
     <%= form.field_container :meta_title, class: ['form-group'] do %>
-      <%= form.label :meta_title, t('page.meta_title') %><
+      <%= form.label :meta_title, t('page.meta_title') %>
       <%= form.text_field :meta_title, :class => "text form-control" %>
     <% end %>
   </div>
@@ -17,14 +19,15 @@
       <%= form.text_field :meta_description, :class => "text form-control" %>
     <% end %>
   </div>
-</div>
-<div class="row">
   <div class="col-md-3">
     <%= form.field_container :meta_keywords, class: ['form-group'] do %>
       <%= form.label :meta_keywords, t('page.meta_keywords') %>
       <%= form.text_field :meta_keywords, :class => "text" %>
     <% end %>
   </div>
+</div>
+
+<div class="row">
   <div class="col-md-3">
     <%= form.field_container :accessible, class: ['form-group'] do %>
       <%= form.label :accessible, t('page.accessible') %>
