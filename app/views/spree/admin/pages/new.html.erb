@@ -4,9 +4,9 @@
   <%= t('.new_page') %>
 <% end %>
 
-<%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @page } %>
+<%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @object } %>
 
-<%= form_for([:admin, @page], :html => { :multipart => true }) do |f| %>
+<%= form_for([:admin, @object], :html => { :multipart => true }) do |f| %>
   <fieldset>
     <%= render :partial => 'form', :locals => { :form => f } %>
     <%= render :partial => 'spree/admin/shared/new_resource_links' %>

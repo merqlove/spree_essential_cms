@@ -1,10 +1,10 @@
 class Spree::Admin::PageImagesController < Spree::Admin::ResourceController
 
-  before_action :load_data
-
   create.before :set_viewable
   update.before :set_viewable
   destroy.before :destroy_before
+
+  belongs_to 'spree/page'
 
   def update_positions
     params[:positions].each do |id, index|
@@ -18,15 +18,18 @@ class Spree::Admin::PageImagesController < Spree::Admin::ResourceController
   private
   
   def location_after_save
-    admin_page_images_url(@page)
+    admin_page_images_url(parent)
   end
 
-  def load_data
-    @page = Spree::Page.find_by_path(params[:page_id])
+  def parent
+    if parent_data.present?
+      @parent ||= Spree::Page.find_by_path(params[:page_id])
+      instance_variable_set("@#{resource.model_name}", @parent)
+    end
   end
 
   def set_viewable
-    @page_image.viewable = @page
+    @page_image.viewable = parent
   end
 
   def destroy_before
@@ -36,9 +39,5 @@ class Spree::Admin::PageImagesController < Spree::Admin::ResourceController
   def permitted_resource_params
     return ActionController::Parameters.new unless params[resource.object_name].present?
     params.require(resource.object_name).permit(:delete_attachment, :attachment, :alt)
-  end
-
-  def model_class
-    Spree::PageImage
   end
 end

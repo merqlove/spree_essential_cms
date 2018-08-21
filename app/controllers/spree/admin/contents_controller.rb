@@ -17,14 +17,13 @@ class Spree::Admin::ContentsController < Spree::Admin::ResourceController
     end
   end
 
-  private
-
-  def get_pages
-    @pages = Spree::Page.order(:position).all
-  end
+  protected
 
   def parent
-    @page ||= Spree::Page.find_by_path(params[:page_id])
+    if parent_data.present?
+      @parent ||= Spree::Page.find_by_path(params[:page_id])
+      instance_variable_set("@#{resource.model_name}", @parent)
+    end
   end
 
   def collection
@@ -46,5 +45,11 @@ class Spree::Admin::ContentsController < Spree::Admin::ResourceController
                                                 :hide_title,
                                                 :position,
                                                 :attachment)
+  end
+
+  private
+
+  def get_pages
+    @pages = Spree::Page.order(:position).all
   end
 end

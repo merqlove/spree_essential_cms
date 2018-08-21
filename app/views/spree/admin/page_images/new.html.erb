@@ -6,7 +6,7 @@
 
 <%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @page_image } %>
 
-<%= form_for(@page_image, :url => admin_page_images_path(@page), :html => { :multipart => true }) do |f| %>
+<%= form_for(@page_image, :url => admin_page_images_path(@parent), :html => { :multipart => true }) do |f| %>
   <fieldset>
     <%= render :partial => 'form', :locals => { :form => f } %>
     <%= render :partial => 'spree/admin/shared/new_resource_links' %>
