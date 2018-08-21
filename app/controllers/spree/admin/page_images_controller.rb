@@ -23,7 +23,7 @@ class Spree::Admin::PageImagesController < Spree::Admin::ResourceController
 
   def parent
     if parent_data.present?
-      @parent ||= Spree::Page.find_by_path(params[:page_id])
+      @parent ||= Spree::Page.find_with_path(params[:page_id])
       instance_variable_set("@#{resource.model_name}", @parent)
     end
   end
