@@ -34,7 +34,7 @@ class Spree::Admin::PagesController < Spree::Admin::ResourceController
 
     def permitted_resource_params
       return ActionController::Parameters.new unless params[resource.object_name].present?
-      pparams.require(resource.object_name).permit(:title,
+      params.require(resource.object_name).permit(:title,
                                                    :nav_title,
                                                    :path,
                                                    :meta_title,
