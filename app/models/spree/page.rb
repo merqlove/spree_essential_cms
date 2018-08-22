@@ -7,10 +7,6 @@ class Spree::Page < ActiveRecord::Base
       find_by_path _path.to_s.sub(/^\/*/, "/").gsub("--", "/")
     end
 
-    def page_images
-      images
-    end
-
   end
   
   alias_attribute :name, :title
@@ -28,7 +24,11 @@ class Spree::Page < ActiveRecord::Base
   
   before_validation :set_defaults
   after_create :create_default_content
-    
+
+  def page_images
+    images
+  end
+
   def to_param
     return "_home_" if path == "/"
     path.sub(/^\/*/, "")
