@@ -7,6 +7,10 @@ class Spree::Page < ActiveRecord::Base
       find_by_path _path.to_s.sub(/^\/*/, "/").gsub("--", "/")
     end
 
+    def page_images
+      images
+    end
+
   end
   
   alias_attribute :name, :title
