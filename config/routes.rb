@@ -5,7 +5,7 @@ class Spree::PossiblePage
   end
 end
 
-Spree::Core::Engine.add_routes do
+Spree::Core::Engine.append_routes do
 
   namespace :admin do
 
