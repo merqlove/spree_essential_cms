@@ -7,6 +7,7 @@
 <table class="index sortable table" data-sortable-link="<%= update_positions_admin_page_images_url(@parent) -%>">
   <thead>
     <tr>
+      <th class="no-border"></th>
       <th><%= t("thumbnail") %></th>
       <th><%= t("alt_text") %></th>
       <th><%= t("action") %></th>
@@ -15,7 +16,10 @@
   <tbody>
     <% @page.images.each do |image| %>
       <tr id="<%= dom_id(image) %>">
-        <td><span class="handle">&nbsp;</span>&nbsp; <%= link_to(image_tag(image.attachment.url(:mini)), image.attachment.url(:large)) %></td>
+        <td class="move-handle">
+          <span class="icon icon-sort handle"></span>
+        </td>
+        <td><%= link_to(image_tag(image.attachment.url(:mini)), image.attachment.url(:large)) %></td>
         <td><%= image.alt %></td>
         <td class="actions">
           <%= link_to_with_icon('edit', t("edit"), edit_admin_page_image_url(@parent, image)) %>

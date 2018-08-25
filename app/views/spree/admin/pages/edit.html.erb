@@ -1,5 +1,9 @@
 <%= render :partial => 'spree/admin/shared/page_tabs', :locals => {:current => 'Page Details'} %>
 
+<% content_for :page_actions do %>
+  <%= button_link_to  t("new_page"), new_object_url(:page_id => @page&.path), :icon => 'add', :class => "btn-success", :id => "new_page_link" %>
+<% end if can? :create, Spree::Page %>
+
 <%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @object } %>
 
 <%= form_for([:admin, @object]) do |f| %>

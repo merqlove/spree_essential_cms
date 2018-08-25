@@ -1,5 +1,6 @@
 class Spree::Page < ActiveRecord::Base
-  
+  acts_as_nested_set :dependent => :destroy
+
   class << self
   
     def find_with_path(_path)
@@ -69,6 +70,7 @@ class Spree::Page < ActiveRecord::Base
       self.nav_title = title if nav_title.blank?
       self.path = nav_title.parameterize if path.blank?
       self.path = "/" + path.sub(/^\//, "")
+      self.path = parent.path + path.sub(parent.path, '') if child? && parent
     end
     
     def create_default_content

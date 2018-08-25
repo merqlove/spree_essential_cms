@@ -11,6 +11,7 @@
 <table id="listing_contents" class="index sortable table" data-sortable-link="<%= update_positions_admin_page_contents_url(@parent) -%>">
   <thead>
   <tr>
+      <th class="no-border"></th>
       <th><%= sort_link @search, :title, t("content.title") %></th>
       <th><%= sort_link @search, :context, t("content.context") %></th>
       <th><%= t("action") %></th>
@@ -19,7 +20,10 @@
   <tbody>
     <%- @collection.each do |content|%>
     <tr id="spree_<%= dom_id content %>">
-      <td><span class="handle">&nbsp;</span>&nbsp; <%= link_to content.title, object_url(content) %></td>
+      <td class="move-handle">
+        <span class="icon icon-sort handle"></span>
+      </td>
+      <td><%= link_to content.title, object_url(content) %></td>
       <td><%= content.context %>
       <td>
         <%= link_to_edit content %> &nbsp;

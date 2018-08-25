@@ -14,6 +14,10 @@ Spree::Core::Engine.append_routes do
         post :update_positions
       end
 
+      member do
+        get :nested_pages
+      end
+
       resources :contents do
         collection do
           post :update_positions

@@ -1,4 +1,6 @@
-<h1><%= (t('.editing_page') + " &ldquo;#{@page.title}&rdquo;").html_safe %></h1>
+<% content_for :page_title do %>
+  <%= (t('.editing_page') + " &ldquo;#{@page.title}&rdquo;").html_safe %>
+<% end %>
 
 <% content_for :sidebar do %>
 
