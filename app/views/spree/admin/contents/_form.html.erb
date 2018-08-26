@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-3">
     <%= form.field_container :title, class: ['form-group'] do %>
-      <%= form.label :title, t('content.title') %><br />
+      <%= form.label :title, t('content.title') %>
       <%= form.text_field :title, :class => "title form-control"  %>
     <% end %>
   </div>
   <div class="col-md-3">
     <%= form.field_container :page, class: ['form-group'] do %>
-      <%= form.label :page_id, t('content.page') %><br />
+      <%= form.label :page_id, t('content.page') %>
       <%= form.select :page_id, @pages.collect{|i| [i.title, i.id]}, :class => "form-control"  %>
     <% end %>
   </div>
