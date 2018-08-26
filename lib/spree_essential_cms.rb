@@ -12,7 +12,7 @@ module SpreeEssentialCms
   end
 
   def self.sub_tab
-    [ :pages, { :label => 'spree.admin.subnav.pages', :match_path => '/pages' }]
+    [ :pages, { :label => Spree.t('admin.subnav.pages'), :match_path => '/pages' }]
   end
 
 end
