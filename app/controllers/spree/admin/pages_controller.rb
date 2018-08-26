@@ -6,6 +6,10 @@ class Spree::Admin::PagesController < Spree::Admin::ResourceController
     render :index
   end
 
+  def show
+    redirect_to edit_object_url(@object)
+  end
+
   def location_after_save
     case params[:action]
       when "create"

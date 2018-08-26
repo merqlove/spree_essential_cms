@@ -7,6 +7,10 @@ class Spree::Admin::ContentsController < Spree::Admin::ResourceController
 
   belongs_to 'spree/page'
 
+  def show
+    redirect_to edit_object_url(@object)
+  end
+
   def update_positions
     params[:positions].each do |id, index|
       parent.contents.update_all(['position=?', index], ['id=?', id])
