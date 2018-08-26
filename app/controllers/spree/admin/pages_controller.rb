@@ -36,6 +36,7 @@ class Spree::Admin::PagesController < Spree::Admin::ResourceController
 
     def load_data
       @parent ||= Spree::Page.find_with_path(params[:page_id])
+      @page.parent_id = @parent.id
     end
 
     def collection
