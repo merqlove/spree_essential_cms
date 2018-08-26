@@ -8,7 +8,7 @@
   <div class="col-md-3">
     <%= form.field_container :page, class: ['form-group'] do %>
       <%= form.label :page_id, t('content.page') %>
-      <%= form.select :page_id, @pages.collect{|i| [i.title, i.id]}, :class => "form-control"  %>
+      <%= form.select :page_id, @pages.collect{|i| [i.title, i.id]}, {}, :class => "form-control"  %>
     <% end %>
   </div>
 </div>
@@ -40,8 +40,8 @@
     <div class="col-md-3">
       <% if @content.attachment.exists?(:mini) %>
         <%= form.field_container :delete_attachment, class: ['form-group'] do %>
-          <%= form.check_box :delete_attachment %>
           <%= form.label :delete_attachment, t('content.delete_attachment'), :class => "form-control" %>
+          <%= form.check_box :delete_attachment %>
         <% end %>
 
         <p><%= image_tag @content.attachment.url(:mini) %></p>
