@@ -22,9 +22,9 @@
         <td><%= link_to(image_tag(image.attachment.url(:mini)), image.attachment.url(:large)) %></td>
         <td><%= image.alt %></td>
         <td class="actions">
-          <%= link_to_with_icon('edit', t("edit"), edit_admin_page_image_url(@parent, image)) %>
+          <%= link_to_with_icon('edit', t("edit"), edit_admin_page_image_url(@parent, image), :no_text => true) %>
           &nbsp;
-          <%= link_to_delete image, {:url => admin_page_image_url(@parent, image) }%>
+          <%= link_to_delete image, {:url => admin_page_image_url(@parent, image), :no_text => true }%>
         </td>
       </tr>
     <% end %>

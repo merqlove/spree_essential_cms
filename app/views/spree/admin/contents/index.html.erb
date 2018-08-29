@@ -26,8 +26,8 @@
       <td><%= link_to content.title, object_url(content) %></td>
       <td><%= content.context %>
       <td>
-        <%= link_to_edit content %> &nbsp;
-        <%= link_to_delete content %>
+        <%= link_to_edit content, :no_text => true%> &nbsp;
+        <%= link_to_delete content, :no_text => true %>
       </td>
     </tr>
     <% end %>
