@@ -25,7 +25,7 @@ class Spree::Admin::PagesController < Spree::Admin::ResourceController
     end
     respond_to do |format|
       format.html { redirect_to admin_pages_path }
-      format.js  { render :text => 'Ok' }
+      format.js  { render :plain => '' }
     end
   end
 

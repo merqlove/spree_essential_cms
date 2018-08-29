@@ -17,7 +17,7 @@ class Spree::Admin::ContentsController < Spree::Admin::ResourceController
     end
     respond_to do |format|
       format.html { redirect_to admin_page_contents_url(parent) }
-      format.js  { render :text => 'Ok' }
+      format.js  { render :plain => '' }
     end
   end
 
