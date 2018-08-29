@@ -46,10 +46,10 @@
 
   <% @page = Spree::Page.search %>
   <%= search_form_for [:admin, @page] do |f| %>
-    <p>
-      <label><%= t '.title_contains' %></label><br />
-      <%= f.text_field :title_cont, :size => 25 %>
-    </p>
+    <%= f.field_container :title_cont, class: ['form-group'] do %>
+      <label><%= t '.title_contains' %></label>
+      <%= f.text_field :title_cont, :size => 25, :class => "form-control" %>
+    <% end %>
     <p><%= button t("search") %></p>
   <% end %>
 </div>

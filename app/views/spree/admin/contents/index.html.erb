@@ -43,10 +43,10 @@
 
   <% @content = Spree::Content.search %>
   <%= search_form_for [:admin, @parent, @content] do |f| %>
-    <p>
+    <%= f.field_container :title_cont, class: ['form-group'] do %>
       <label><%= t('content.title') %></label><br />
-      <%= f.text_field :title_cont, :size => 25 %>
-    </p>
+      <%= f.text_field :title_cont, :size => 25, :class => "form-control" %>
+    <% end %>
     <p><%= button t("search") %></p>
   <% end %>
 </div>
