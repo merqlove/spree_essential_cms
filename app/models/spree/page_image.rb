@@ -8,6 +8,10 @@ class Spree::PageImage < Spree::Asset
   validates_attachment :attachment,
                        :presence => true
 
+  def self.update_all_positions(positions)
+    update(positions.keys, positions.values.map {|i| {:position => i} })
+  end
+
   def image_content?
     attachment_content_type.to_s.match(/\/(jpeg|png|gif|tiff|x-photoshop)/)
   end

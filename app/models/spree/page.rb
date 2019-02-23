@@ -61,6 +61,10 @@ class Spree::Page < ActiveRecord::Base
     value.gsub!(/[\/\-\_]+$/, "") unless value == "/"
     write_attribute :path, value
   end
+
+  def self.update_all_positions(positions)
+    update(positions.keys, positions.values.map {|i| {:position => i} })
+  end
   
   private
   

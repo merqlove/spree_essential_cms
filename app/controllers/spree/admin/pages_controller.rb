@@ -20,9 +20,7 @@ class Spree::Admin::PagesController < Spree::Admin::ResourceController
   end
 
   def update_positions
-    params[:positions].each do |id, index|
-      Spree::Page.update_all(['position=?', index], ['id=?', id])
-    end
+    model_class.update_all_positions(params[:positions])
     respond_to do |format|
       format.html { redirect_to admin_pages_path }
       format.js  { render :plain => '' }

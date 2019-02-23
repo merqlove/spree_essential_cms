@@ -63,6 +63,10 @@ class Spree::Content < ActiveRecord::Base
     write_attribute :context, value.to_s.parameterize
   end
 
+  def self.update_all_positions(positions)
+    update(positions.keys, positions.values.map {|i| {:position => i} })
+  end
+
   private
 
   def delete_attachment!

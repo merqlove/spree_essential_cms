@@ -7,9 +7,7 @@ class Spree::Admin::PageImagesController < Spree::Admin::ResourceController
   belongs_to 'spree/page'
 
   def update_positions
-    params[:positions].each do |id, index|
-      Spree::PageImage.update_all(['position=?', index], ['id=?', id])
-    end
+    model_class.update_all_positions(params[:positions])
     respond_to do |format|
       format.js  { render :plain => '' }
     end
