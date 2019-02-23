@@ -12,7 +12,7 @@ class Spree::Admin::ContentsController < Spree::Admin::ResourceController
   end
 
   def update_positions
-    parent.contents.update_all_positions(params[:positions])
+    model_class.update_all_positions(params[:positions])
     respond_to do |format|
       format.html { redirect_to admin_page_contents_url(parent) }
       format.js  { render :plain => '' }
