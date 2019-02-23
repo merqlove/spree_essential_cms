@@ -15,7 +15,7 @@
   </thead>
   <tbody>
     <% @page.images.each do |image| %>
-      <tr id="<%= dom_id(image) %>">
+      <tr class="spree_page_image" id="spree_page_image_<%= dom_id(image) %>">
         <td class="move-handle">
           <span class="icon icon-sort handle"></span>
         </td>

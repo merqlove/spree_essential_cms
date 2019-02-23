@@ -19,7 +19,7 @@
   </thead>
   <tbody>
     <%- @collection.each do |page|%>
-    <tr id="<%= dom_id page %>">
+    <tr class="spree_page" id="spree_page_<%= dom_id page %>">
       <td class="move-handle">
         <span class="icon icon-sort handle"></span>
       </td>
