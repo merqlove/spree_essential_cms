@@ -39,7 +39,7 @@ class Spree::Admin::PagesController < Spree::Admin::ResourceController
 
     def collection
       params[:q] ||= {}
-      params[:q][:s] ||= "page asc"
+      params[:q][:s] ||= "position asc"
       @search = @object ? @object.children : Spree::Page.try(:roots)
       @search = @search.search(params[:q])
       @collection = @search.result.page(params[:page]).per(Spree::Config[:admin_orders_per_page])

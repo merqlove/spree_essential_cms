@@ -8,6 +8,8 @@ class Spree::PageImage < Spree::Asset
   validates_attachment :attachment,
                        :presence => true
 
+  default_scope -> { order(:position) }
+
   def self.update_all_positions(positions)
     update(positions.keys, positions.values.map {|i| {:position => i} })
   end
