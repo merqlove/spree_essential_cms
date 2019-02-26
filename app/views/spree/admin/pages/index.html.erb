@@ -29,7 +29,7 @@
       <td><%= page.visible %></td>
       <td>
         <%= link_to_with_icon :accept, t('preview'), page.path, :no_text => true, :onclick => 'window.open(this.href);return false;' %> &nbsp;
-        <%= link_to_with_icon :pages, t('page.contents'), admin_page_contents_path(page), :no_text => true %> &nbsp;
+        <%= link_to_with_icon(:pages, t('page.contents'), admin_page_contents_path(page), :no_text => true) if SpreeEssentialCms.contents? %> &nbsp;
         <%= link_to_edit page, :no_text => true %> &nbsp;
         <%= link_to_delete page, :no_text => true %>
       </td>

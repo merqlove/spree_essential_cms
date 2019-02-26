@@ -14,13 +14,17 @@ Spree::Core::Engine.append_routes do
         post :update_positions
       end
 
-      member do
-        get :nested_pages
+      if SpreeEssentialCms.sub_pages?
+        member do
+          get :nested_pages
+        end
       end
 
-      resources :contents do
-        collection do
-          post :update_positions
+      if SpreeEssentialCms.contents?
+        resources :contents do
+          collection do
+            post :update_positions
+          end
         end
       end
 

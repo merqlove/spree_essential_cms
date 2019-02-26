@@ -16,12 +16,20 @@ module SpreeEssentialCms
   end
 
   class << self
+    attr_accessor :route_regex, :contents, :sub_pages
+
+    def contents
+      @contents ||= false
+    end
+    alias :contents? :contents
+
+    def sub_pages
+      @sub_pages ||= false
+    end
+    alias :sub_pages? :sub_pages
+
     def route_regex
       @route_regex ||= ""
-    end
-
-    def route_regex=(value)
-      @route_regex = value
     end
   end
 end
