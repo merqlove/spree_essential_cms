@@ -33,6 +33,7 @@ class Spree::Admin::PagesController < Spree::Admin::ResourceController
     end
 
     def load_data
+      return unless SpreeEssentialCms.sub_pages?
       @parent ||= Spree::Page.find_with_path(params[:page_id])
       @page.parent_id = @parent.id
     end
