@@ -7,7 +7,7 @@
   <h3 class="name"><%= @page.title %></h3>
   <br clear="clear" />
 
-  <ul class="sidebar post-menu list">
+  <ul class="sidebar post-menu list nav nav-pills nav-stacked" data-hook="admin_page_tabs">
     <li<%== ' class="active"' if current == t('.page_details') %>>
       <%= link_to t('.page_details'), edit_admin_page_url(@page) %>
     </li>
