@@ -8,9 +8,9 @@
   <thead>
     <tr>
       <th class="no-border"></th>
-      <th><%= t("thumbnail") %></th>
-      <th><%= t("alt_text") %></th>
-      <th><%= t("action") %></th>
+      <th><%= Spree.t("thumbnail") %></th>
+      <th><%= Spree.t("alt_text") %></th>
+      <th><%= Spree.t("action") %></th>
     </tr>
   </thead>
   <tbody>
@@ -22,7 +22,7 @@
         <td><%= link_to(image_tag(image.attachment.url(:mini)), image.attachment.url(:large)) %></td>
         <td><%= image.alt %></td>
         <td class="actions">
-          <%= link_to_with_icon('edit', t("edit"), edit_admin_page_image_url(@parent, image), :no_text => true) %>
+          <%= link_to_with_icon('edit', Spree.t("edit"), edit_admin_page_image_url(@parent, image), :no_text => true) %>
           &nbsp;
           <%= link_to_delete image, {:url => admin_page_image_url(@parent, image), :no_text => true }%>
         </td>

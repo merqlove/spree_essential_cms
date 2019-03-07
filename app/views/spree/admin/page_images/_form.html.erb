@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-3">
     <%= form.field_container :attachment, class: ['form-group'] do %>
-      <%= form.label :attachment %>
+      <%= form.label :attachment, Spree.t(:attachment) %>
       <%= form.file_field :attachment, :class => 'form-control' %>
     <% end %>
   </div>
   <div class="col-md-3">
     <%= form.field_container :alt, class: ['form-group'] do %>
-      <%= form.label :alt %>
+      <%= form.label :alt, Spree.t(:alt) %>
       <%= form.text_field :alt, :class => 'text form-control' %>
     <% end %>
   </div>
