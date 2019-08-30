@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   # Spree Essentials
-  s.add_runtime_dependency('spree_essentials', '~> 3.0.0.rc1')
-  s.add_runtime_dependency('spree_frontend', '~> 3.0')
+  s.add_runtime_dependency('spree_essentials', '~> 3.0.0.rc2')
+  s.add_runtime_dependency('spree_frontend', '~> 3.6.6')
   s.add_runtime_dependency('rdiscount', '~> 2.2.0')
 
   # Development
